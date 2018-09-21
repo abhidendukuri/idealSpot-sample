@@ -13,10 +13,6 @@ categories_url = "https://api.yelp.com/v3/categories?"
 business_search_url = "https://api.yelp.com/v3/businesses/search?"
 business_detail_url = "https://api.yelp.com/v3/businesses/"
 
-# url parameters
-# locale - query only the restaurants found in the US
-locale = "locale=en_US"
-
 # 1. /yelp/categories
 @app.route("/yelp/categories")
 def list_categories():
@@ -28,7 +24,7 @@ def list_categories():
     #   # URL + Parameters - the only parameter is the locale so we append that to the url
     #   # headers - we need the API key in order to make calls to the Yelp Fusion API
     resp = requests.get(
-        categories_url + locale, 
+        categories_url + "locale=en_US", 
         headers = {'Authorization': "Bearer " + api_key}
     )
     
